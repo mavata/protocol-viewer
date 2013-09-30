@@ -2,7 +2,7 @@
 
 import argparse, string, sys, os
 
-PATHNAME = os.path.abspath('.')
+PATHNAME = os.path.dirname(os.path.realpath(__file__))
 
 class Protocol(object):
     """
@@ -79,14 +79,14 @@ def get_parser():
 def pretty_print(protocol):
     if isinstance(protocol, list):
         for entry in protocol:
-            print entry
+            print(entry)
             print
     else:
-        print protocol
+        print(protocol)
 
 def command_line_runner():
     """
-    Initialize the parser...
+    Initialize the parser
     """
     parser = get_parser()
     args = vars(parser.parse_args())
