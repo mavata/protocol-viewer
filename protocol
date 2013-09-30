@@ -1,0 +1,101 @@
+#!/opt/local/bin/python
+
+import argparse
+import string
+
+class Protocol(object):
+    """
+    A helper class to permit easy multiplication and display of protocols.
+    """
+    def __init__(self, protocol_title, protocol_dict, multiplier=1):
+        self.protocol_title = protocol_title.strip()
+        self.protocol_dict = protocol_dict
+        self.multiplier = multiplier
+        self.template = [float(amount)/multiplier 
+                for amount, component in protocol_dict
+                if "emplate" in component][0]
+        self.volume = sum([float(amount) for amount, component in protocol_dict
+                if "emplate" not in component])/float(multiplier)
+    
+    def __mul__(self, other):
+        """
+        Multiplies the quantity column of the protocol.
+        """
+        assert(isinstance(other, int))
+        new_dict = [[float(entry[0]) * other, entry[1]] 
+                for entry in self.protocol_dict]
+        return Protocol(self.protocol_title, new_dict, other)
+
+    def __repr__(self):
+        """
+        Pretty prints the protocol object.
+        """
+        output = []
+        output.append("{} {}X".format(self.protocol_title, self.multiplier))
+        for entry in self.protocol_dict:
+            if "emplate" not in entry[1]:
+                amount, reagent = entry
+                amount = str(amount) + " ul"
+                amount = format(amount, '<15')
+                output.append(amount + reagent)
+        output.append("Divide {} ul on {} ul of template".format(
+            self.volume, self.template))
+        return "\n".join(output)
+
+def parse_protocol(protocol_file):
+    """
+    Yields protocol entries based on the protocol file.
+    """
+    with open(protocol_file) as f:
+        protocol = []
+        protocol_started = False
+        for line in f:
+            if line[0] not in string.digits and not protocol_started:
+                protocol_title = line
+                protocol_started = True
+            elif line[0] in string.digits:
+                protocol_line = [entry.strip() for entry in line.split(",")]
+                protocol.append(protocol_line)
+            else:
+                yield Protocol(protocol_title, protocol)
+                protocol = []
+                protocol_started = False
+        yield Protocol(protocol_title, protocol)
+
+def get_parser():
+    """
+    Parser for the command line arguments
+    """
+    parser = argparse.ArgumentParser(description='basic lab protocols')
+    parser.add_argument('reaction', metavar = 'REACTION', type=str, 
+            help='reaction search keyword')
+    parser.add_argument('fold', type=int, 
+            help='how many-fold to prepare', default=1)
+    parser.add_argument('-f', '--file', help="which protocol file to use",
+            default="/Users/localadmin_mvtammin/bin/protocols.txt", type=str)
+    return parser
+
+def pretty_print(protocol):
+    if isinstance(protocol, list):
+        for entry in protocol:
+            print entry
+            print
+    else:
+        print protocol
+
+def command_line_runner():
+    """
+    Initialize the parser...
+    """
+    parser = get_parser()
+    args = vars(parser.parse_args())
+    reaction_keyword = args['reaction']
+    fold = args['fold']
+    protocol_file = args['file']
+    protocol_list = list(parse_protocol(protocol_file))
+    protocol = [protocol * fold for protocol in protocol_list 
+            if reaction_keyword.lower() in protocol.protocol_title.lower()]
+    pretty_print(protocol)
+
+if __name__ == '__main__':
+    command_line_runner()

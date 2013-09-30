@@ -1,0 +1,36 @@
+Phusion PCR	
+16.25,water
+5,5X HF
+0.5,10 mM dNTP
+1,10 uM forward primer
+1,10 uM reverse primer
+0.25,Phusion
+1,template
+	
+EF-PCR (25 ul)	
+15,water
+5,5X Q5 buffer
+0.5,10 mM dNTP
+0.3,SYBR 1/500
+1,10 uM barcode-FW
+1,10 uM 631 or Mu-barcode-RV
+0.2,Q5 HotStart polymerase
+2,template beads in water
+
+Illumina
+12.25,water
+5,5X Q5 buffer
+0.5,10 mM dNTP
+2.5,3 uM for primer
+2.5,3 uM rev primer
+0.25,Q5 polymerase
+2,template
+
+Emulsion PCR
+30,5X Q5 buffer
+3,10 mM dNTP
+12,0.5 uM 515F
+12,10 uM 806R
+75,water
+3,Q5 polymerase
+15,template beads
