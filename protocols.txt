@@ -13,7 +13,7 @@ qPCR Q5
 0.5,10 mM dNTP
 0.3,SYBR 1/500
 1,10 uM forward primer
-1,10 uM reverse primer
+1,10 uM reverse primer
 0.2,Q5 HotStart polymerase
 2,template
 
