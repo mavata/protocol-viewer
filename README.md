@@ -1,4 +1,4 @@
-protocol_viewer - a tool to help you prep mastermixes for PCRs and other stuff 
+protocol-viewer - a tool to help you prep mastermixes for PCRs and other stuff 
 ==============================================================================
 
 Description
