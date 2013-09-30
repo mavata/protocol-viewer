@@ -22,7 +22,7 @@ Examples
 --------
 ```python
 #Prepare a Phusion mastermix for three reactions
-protocol phusion 3
+$ protocol phusion 3
 >Phusion PCR 3X
 >48.75 ul       water
 >15.0 ul        5X HF
@@ -33,7 +33,7 @@ protocol phusion 3
 >Divide 24.0 ul on 1.0 ul of template
 
 #Display all PCR protocols and calculate mastermixes for five reactions
-protocol pcr 5
+$ protocol pcr 5
 >Phusion PCR 5X
 >81.25 ul       water
 >25.0 ul        5X HF
