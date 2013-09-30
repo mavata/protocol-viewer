@@ -48,16 +48,16 @@ $ protocol pcr 5
 >25.0 ul        5X Q5 buffer
 >2.5 ul         10 mM dNTP
 >1.5 ul         SYBR 1/500
->5.0 ul         10 uM�barcode-FW
->5.0 ul         10 uM�631 or Mu-barcode-RV
+>5.0 ul         10 uM forward primer
+>5.0 ul         10 uM reverse primer
 >1.0 ul         Q5 HotStart polymerase
 >Divide 23.0 ul on 2.0 ul of template
 >
 >Emulsion PCR 5X
 >150.0 ul       5X Q5 buffer
 >15.0 ul        10 mM dNTP
->60.0 ul        0.5 uM 515F
->60.0 ul        10 uM 806R
+>60.0 ul        0.5 uM forward primer
+>60.0 ul        10 uM reverse primer
 >375.0 ul       water
 >15.0 ul        Q5 polymerase
 >Divide 135.0 ul on 15.0 ul of template
