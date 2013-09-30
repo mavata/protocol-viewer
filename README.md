@@ -20,8 +20,8 @@ Python 2.7.3
 
 Examples
 --------
+Prepare a Phusion mastermix for three reactions
 ::
-#Prepare a Phusion mastermix for three reactions
     $ protocol phusion 3
     >Phusion PCR 3X
     >48.75 ul       water
@@ -32,7 +32,8 @@ Examples
     >0.75 ul        Phusion
     >Divide 24.0 ul on 1.0 ul of template
 
-#Display all PCR protocols and calculate mastermixes for five reactions
+Display all PCR protocols and calculate mastermixes for five reactions
+::
     $ protocol pcr 5
     >Phusion PCR 5X
     >81.25 ul       water
