@@ -1,7 +1,8 @@
 #!/opt/local/bin/python
 
-import argparse
-import string
+import argparse, string, sys, os
+
+PATHNAME = os.path.abspath('.')
 
 class Protocol(object):
     """
@@ -13,9 +14,9 @@ class Protocol(object):
         self.multiplier = multiplier
         self.template = [float(amount)/multiplier 
                 for amount, component in protocol_dict
-                if "emplate" in component][0]
+                if "template" in component.lower()][0]
         self.volume = sum([float(amount) for amount, component in protocol_dict
-                if "emplate" not in component])/float(multiplier)
+                if "template" not in component.lower()])/float(multiplier)
     
     def __mul__(self, other):
         """
@@ -72,7 +73,7 @@ def get_parser():
     parser.add_argument('fold', type=int, 
             help='how many-fold to prepare', default=1)
     parser.add_argument('-f', '--file', help="which protocol file to use",
-            default="/Users/localadmin_mvtammin/bin/protocols.txt", type=str)
+            default=os.path.join(PATHNAME, 'protocols.txt'), type=str)
     return parser
 
 def pretty_print(protocol):
