@@ -20,7 +20,7 @@ Python 2.7.3
 
 Examples
 --------
-```python
+::
 #Prepare a Phusion mastermix for three reactions
 $ protocol phusion 3
 >Phusion PCR 3X
